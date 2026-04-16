@@ -802,7 +802,6 @@ GameObject:
   - component: {fileID: 815901368}
   - component: {fileID: 815901370}
   - component: {fileID: 815901371}
-  - component: {fileID: 815901372}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -996,18 +995,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.656659, y: 1.97}
   m_EdgeRadius: 0
---- !u!114 &815901372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 815901364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d077c97786452e94093c8cb988fc0da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
 --- !u!1 &1698386903
 GameObject:
   m_ObjectHideFlags: 0

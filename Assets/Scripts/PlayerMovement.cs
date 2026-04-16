@@ -3,10 +3,22 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float dashSpeed = 20f;
+    public float duration = 0.15f;
+    public float dashCooldown = 1f;
+    public float invincibilityDuration = 0.2f;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
-    private Animator animator; 
+    private Vector2 lastMoveDirection;
+    private Animator animator;
+
+    private bool isDashing = false;
+    private bool isInvincible = false;
+
+    private float dashCooldownTimer = 0f;
+    private float dashTimer = 0f;
+    private float invincibilityTimer = 0f;
 
     void Start()
     {
@@ -14,9 +26,37 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    
+    public bool IsInvincible => isInvincible;
+
     void Update()
     {
+        dashCooldownTimer -= Time.deltaTime;
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //Debug.Log("Space pressed");
+        }
+
+        if (isDashing)
+        {
+            dashTimer -= Time.deltaTime;
+            invincibilityTimer -= Time.deltaTime;
+
+            if (invincibilityTimer <= 0f)
+            {
+                isInvincible = false;
+            }
+
+            if (dashTimer <= 0f)
+            {
+                isDashing = false;
+                rb.linearVelocity = Vector2.zero;
+            }
+
+            return;
+        }
+
         float x = 0f;
         float y = 0f;
 
@@ -25,8 +65,27 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) x -= 1;
         if (Input.GetKey(KeyCode.D)) x += 1;
 
-        moveInput = new Vector2 (x, y).normalized;
+        moveInput = new Vector2(x, y).normalized;
 
+       
+        if (moveInput != Vector2.zero)
+        {
+            lastMoveDirection = moveInput;
+        }
+
+   
+        if (Input.GetKeyDown(KeyCode.Space) && dashCooldownTimer <= 0f && lastMoveDirection != Vector2.zero)
+        {
+            isDashing = true;
+            isInvincible = true;
+            dashTimer = duration;
+            invincibilityTimer = invincibilityDuration;
+            dashCooldownTimer = dashCooldown;
+
+            rb.linearVelocity = lastMoveDirection * dashSpeed;
+
+            return;
+        }
 
         if (moveInput != Vector2.zero)
         {
@@ -40,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("LastInputX", animator.GetFloat("InputX"));
             animator.SetFloat("LastInputY", animator.GetFloat("InputY"));
         }
+
         rb.linearVelocity = moveInput * moveSpeed;
     }
 }
