@@ -5,6 +5,8 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int health;
     private PlayerMovement movement;
+    public MenuManager manager;
+    private bool isDead;
 
     void Start()
     {
@@ -21,8 +23,10 @@ public class PlayerHealth : MonoBehaviour
 
         health = health - value;
         Debug.Log("Player took damage! Health = " + health);
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
+            isDead = true;
+            manager.gameOver();
             Die();
         }
     }

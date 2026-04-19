@@ -100,6 +100,14 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("LastInputY", animator.GetFloat("InputY"));
         }
 
-        rb.linearVelocity = moveInput * moveSpeed;
+        
+    }
+
+    private void FixedUpdate()
+    {
+        if (!isDashing)
+        {
+            rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        }
     }
 }
