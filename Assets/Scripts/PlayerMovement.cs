@@ -24,30 +24,30 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        lastMoveDirection = Vector2.right;
     }
 
-    public bool IsInvincible => isInvincible;
 
+    public bool IsInvincible => isInvincible;
+    public Vector2 LastMoveDirection => lastMoveDirection;
     void Update()
     {
         dashCooldownTimer -= Time.deltaTime;
 
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isInvincible)
         {
-            //Debug.Log("Space pressed");
+            invincibilityTimer -= Time.deltaTime;
+            if (invincibilityTimer < 0f)
+            {
+                isInvincible = false;
+            }
+
         }
 
         if (isDashing)
         {
             dashTimer -= Time.deltaTime;
-            invincibilityTimer -= Time.deltaTime;
-
-            if (invincibilityTimer <= 0f)
-            {
-                isInvincible = false;
-            }
-
             if (dashTimer <= 0f)
             {
                 isDashing = false;
