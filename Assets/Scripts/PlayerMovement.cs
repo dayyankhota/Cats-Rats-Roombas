@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float duration = 0.15f;
     public float dashCooldown = 1f;
     public float invincibilityDuration = 0.2f;
+    public Tutorial tutorial;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -26,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         lastMoveDirection = Vector2.right;
+        tutorial.ShowMessage("Use WASD to move");
+        tutorial.ShowMessage("Use LMB to attack");
+        tutorial.ShowMessage("Press Space Bar to dash");
+        tutorial.ShowMessage("Defeat enemies and collect the keyvard to progress!");
+
     }
 
 

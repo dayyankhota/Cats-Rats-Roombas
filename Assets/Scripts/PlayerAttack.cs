@@ -11,10 +11,12 @@ public class PlayerAttack : MonoBehaviour
     private bool isAttacking = false;
 
     private PlayerMovement movement;
+    private Animator animator;
 
     void Start()
     {
         movement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
         hitbox.SetActive(false);
     }
 
@@ -42,6 +44,16 @@ public class PlayerAttack : MonoBehaviour
                 dir = new Vector2(0, Mathf.Sign(dir.y));
             }
 
+            int attackDir = 0;
+
+            if (dir.x > 0) attackDir = 3;
+            else if (dir.x < 0) attackDir = 2;
+            else if (dir.y > 0) attackDir = 1;
+            else if (dir.y < 0) attackDir = 0;
+
+            animator.SetInteger("AttackDir", attackDir);
+            animator.SetTrigger("Attack");
+
             hitbox.transform.localPosition = dir * attackDistance;
 
             hitbox.SetActive(true);
@@ -56,5 +68,11 @@ public class PlayerAttack : MonoBehaviour
                 hitbox.SetActive(false);
             }
         }
+    }
+
+    public void EndAttack()
+    {
+        isAttacking = false;
+        hitbox.SetActive(false);
     }
 }

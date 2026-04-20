@@ -43,4 +43,17 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
+    public bool HasItem(string itemName)
+    {
+        for (int i = 0; i < itemSlot.Length; i++)
+        {
+            if (itemSlot[i].isFull && itemSlot[i].itemName == itemName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
