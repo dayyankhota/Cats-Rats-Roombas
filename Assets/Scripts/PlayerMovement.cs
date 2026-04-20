@@ -35,7 +35,9 @@ public class PlayerMovement : MonoBehaviour
             tutorial.ShowMessage("Use WASD to move");
             tutorial.ShowMessage("Use LMB to attack");
             tutorial.ShowMessage("Press Space Bar to dash");
-            tutorial.ShowMessage("Defeat enemies and collect the keyvard to progress!");
+            tutorial.ShowMessage("Defeat enemies and collect the keycard to progress!");
+            tutorial.ShowMessage("Press E to open the inventory");
+
         }
 
     }
