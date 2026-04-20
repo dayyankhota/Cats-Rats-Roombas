@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d34fdf5f10af847a75c65ee77f3323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 20
+  damage: 8
   attackCooldown: 1
 --- !u!58 &16262291
 CircleCollider2D:
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d34fdf5f10af847a75c65ee77f3323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 20
+  damage: 8
   attackCooldown: 1
 --- !u!58 &449448194
 CircleCollider2D:
@@ -2206,7 +2206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d34fdf5f10af847a75c65ee77f3323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 20
+  damage: 8
   attackCooldown: 1
 --- !u!58 &1439527909
 CircleCollider2D:
@@ -2367,7 +2367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d34fdf5f10af847a75c65ee77f3323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 20
+  damage: 8
   attackCooldown: 1
 --- !u!58 &1619492923
 CircleCollider2D:
@@ -2541,7 +2541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d34fdf5f10af847a75c65ee77f3323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 20
+  damage: 8
   attackCooldown: 1
 --- !u!58 &1781328544
 CircleCollider2D:
