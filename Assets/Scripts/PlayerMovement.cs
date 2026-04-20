@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance {  get; private set; } 
     public float moveSpeed = 5f;
     public float dashSpeed = 20f;
     public float duration = 0.15f;
@@ -27,10 +29,14 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         lastMoveDirection = Vector2.right;
-        tutorial.ShowMessage("Use WASD to move");
-        tutorial.ShowMessage("Use LMB to attack");
-        tutorial.ShowMessage("Press Space Bar to dash");
-        tutorial.ShowMessage("Defeat enemies and collect the keyvard to progress!");
+
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Level 1") 
+        { 
+            tutorial.ShowMessage("Use WASD to move");
+            tutorial.ShowMessage("Use LMB to attack");
+            tutorial.ShowMessage("Press Space Bar to dash");
+            tutorial.ShowMessage("Defeat enemies and collect the keyvard to progress!");
+        }
 
     }
 
@@ -109,6 +115,17 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     private void FixedUpdate()
     {
         if (!isDashing)

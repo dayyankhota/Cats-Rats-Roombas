@@ -35,5 +35,15 @@ public class ItemSlot : MonoBehaviour
         itemImage.sprite= itemSprite;
     }
 
- 
+    public void ClearSlot()
+    {
+        itemName = null;
+        quantity = 0;
+        itemSprite = null;
+        isFull = false;
+        quantityText.text = "";
+        quantityText.enabled = false;
+        itemImage.sprite = null;
+    }
+
 }

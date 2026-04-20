@@ -20,8 +20,7 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider)
     {
-        Debug.Log("Trigger hit by: " + collider.name + " | Has PlayerHealth: " + (collider.GetComponent<PlayerHealth>() != null));
-        //Debug.Log("Trigger hit by: " + collider.name);
+        
 
         if (attackTimer > 0f) return;
 
@@ -31,7 +30,7 @@ public class EnemyAttack : MonoBehaviour
         {
             player = collider.GetComponentInParent<PlayerHealth>();
         }
-        Debug.Log("Player detected, dealing damage" + (player != null));
+        
 
         if (player != null)
         {

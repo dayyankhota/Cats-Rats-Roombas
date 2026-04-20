@@ -2,42 +2,38 @@ using UnityEngine;
 
 public class AIEnemy : MonoBehaviour
 {
-    public GameObject player;
     public float speed;
+    public float distanceBetween;
     private float distance;
-    public float distanceBetween; 
+    private Transform player;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        player = PlayerMovement.Instance.transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
+        if (PlayerMovement.Instance == null) return;
+
+        distance = Vector2.Distance(transform.position, player.position);
+        Vector2 direction = player.position - transform.position;
         direction.Normalize();
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-      
-
-        if(distance < distanceBetween)
+        if (distance < distanceBetween)
         {
-             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-            // transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
-        Vector3 scale = transform.localScale;
 
-        if(player.transform.position.x < transform.position.x)
+        Vector3 scale = transform.localScale;
+        if (player.position.x < transform.position.x)
         {
             scale.x = Mathf.Abs(scale.x) * -1;
         }
-        else {
+        else
+        {
             scale.x = Mathf.Abs(scale.x);
         }
-
         transform.localScale = scale;
     }
 }

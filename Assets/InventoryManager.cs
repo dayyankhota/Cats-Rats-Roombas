@@ -55,5 +55,13 @@ public class InventoryManager : MonoBehaviour
         }
         return false;
     }
+
+    public void ClearInventory()
+    {
+        for (int i = 0; i < itemSlot.Length; i++)
+        {
+            itemSlot[i].ClearSlot();
+        }
+    }
 }
 

@@ -1,53 +1,79 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int health;
+    public TMP_Text healthText;
     private PlayerMovement movement;
-    public MenuManager manager;
     private bool isDead;
 
-    void Start()
+    void Awake()
     {
-        health = maxHealth;
         movement = GetComponent<PlayerMovement>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Level 1")
+        {
+            ResetPlayer();
+        }
+    }
+
+    void OnEnable()
+    {
+        isDead = false;
+        health = maxHealth;
+        UpdateHealthText();
+    }
+
+    void UpdateHealthText()
+    {
+        if (healthText != null)
+        {
+            healthText.text = "HP: " + health;
+        }
     }
 
     public void TakeDamage(int value)
     {
-        if(movement != null && movement.IsInvincible)
-        {
-            return;
-        }
+        if (movement != null && movement.IsInvincible) return;
+        health -= value;
+        UpdateHealthText();
 
-        health = health - value;
-        Debug.Log("Player took damage! Health = " + health);
         if (health <= 0 && !isDead)
         {
             isDead = true;
-            manager.gameOver();
             Die();
         }
     }
 
     public void Heal(int value)
     {
-        health = health + value;
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
+        health = Mathf.Min(health + value, maxHealth);
+        UpdateHealthText();
     }
 
     public void Die()
     {
-        Debug.Log("YOU DIED");
         gameObject.SetActive(false);
+        GameManager.Instance.GetComponent<MenuManager>().gameOver();
     }
 
-    void Update()
+    public void ResetPlayer()
     {
-        
+        isDead = false;
+        health = maxHealth;
+        gameObject.SetActive(true);
+        UpdateHealthText();
     }
 }

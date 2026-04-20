@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Item : MonoBehaviour
 {
@@ -23,6 +24,12 @@ public class Item : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             inventoryManager.AddItem(itemName, quantity, sprite);
+
+            if(SceneManager.GetActiveScene().name == "Level 2")
+            {
+                MenuManager menuManager = GameManager.Instance.GetComponent<MenuManager>();
+                menuManager.ShowYouWin();
+            }
             Destroy(gameObject);
         }
     }
