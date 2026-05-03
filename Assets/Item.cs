@@ -12,11 +12,14 @@ public class Item : MonoBehaviour
     [SerializeField]
     private Sprite sprite;
     
+    AudioManager audioManager;
     private InventoryManager inventoryManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -24,6 +27,7 @@ public class Item : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             inventoryManager.AddItem(itemName, quantity, sprite);
+            audioManager.PlaySFX(audioManager.pickup);
 
             if(SceneManager.GetActiveScene().name == "Level 2")
             {

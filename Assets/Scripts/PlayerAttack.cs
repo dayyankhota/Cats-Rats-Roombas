@@ -12,12 +12,13 @@ public class PlayerAttack : MonoBehaviour
 
     private PlayerMovement movement;
     private Animator animator;
-
+    AudioManager audioManager;
     void Start()
     {
         movement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
         hitbox.SetActive(false);
+         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     
@@ -29,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
             attackTimer = attackDuration;
 
             Vector2 dir = movement.LastMoveDirection;
-            
+            audioManager.PlaySFX(audioManager.attack);
             if(dir == Vector2.zero)
             {
                 dir = Vector2.right;
