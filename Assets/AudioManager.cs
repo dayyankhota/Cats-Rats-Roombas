@@ -11,4 +11,14 @@ public class AudioManager : MonoBehaviour
       public AudioClip death;
       public AudioClip attack;
       public AudioClip pickup;
+
+      private void Start()
+      {
+
+      }
+
+      public void PlaySFX(AudioClip clip)
+      {
+          SFXSource.PlayOneShot(clip);
+      }
 }
