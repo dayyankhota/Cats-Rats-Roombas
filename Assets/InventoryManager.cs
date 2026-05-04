@@ -15,8 +15,8 @@ public class InventoryManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    // not sure if we will ever need inventory to be visible in game, will keep in case for future
+   /* void Update()
     {
         if(Input.GetButtonDown("Inventory") && menuActivated)
         {
@@ -30,7 +30,7 @@ public class InventoryManager : MonoBehaviour
             InventoryMenu.SetActive(true);
             menuActivated = true;
         }
-    }
+    }*/
 
     public void AddItem(string itemName, int quantity, Sprite itemSprite)
     {
