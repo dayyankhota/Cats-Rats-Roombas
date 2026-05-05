@@ -234,8 +234,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -8811806715494619191, guid: e473af38e84eee94dbe229dd0e2e7b30, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -367,8 +367,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1958676783162264248, guid: f9878b3843378604788eb6c3f80ee726, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Play
+  m_text: '
 
 '
   m_isRightToLeft: 0
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Quit
+  m_text: '
 
 '
   m_isRightToLeft: 0
@@ -911,6 +911,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2efaa8739368ea4e959c58f8cdc3fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
+  gameOverUI: {fileID: 0}
+  youWinUI: {fileID: 0}
 --- !u!114 &2097716280
 MonoBehaviour:
   m_ObjectHideFlags: 0
