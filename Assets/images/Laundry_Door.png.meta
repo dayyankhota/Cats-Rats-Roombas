@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 231373c25ec4a934aa116786a9f2c1b6
+guid: 75c95759dc822204db2e2edd9e5c7ed3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8755603828297880432
-    second: Water Closet_Front Wall_0
+      213: 1287551964625677883
+    second: Laundry_Door_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Water Closet_Front Wall_0
+      name: Laundry_Door_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 400
-        height: 417
+        width: 40
+        height: 338
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 073debbea47228970800000000000000
-      internalID: 8755603828297880432
+      spriteID: b3eae59a0bd4ed110800000000000000
+      internalID: 1287551964625677883
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Water Closet_Front Wall_0: 8755603828297880432
+      Laundry_Door_0: 1287551964625677883
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
