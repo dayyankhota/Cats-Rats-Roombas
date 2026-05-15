@@ -6,10 +6,12 @@ public class AIEnemy : MonoBehaviour
     public float distanceBetween;
     private float distance;
     private Transform player;
+    private Animator animator;
 
     void Start()
     {
         player = PlayerMovement.Instance.transform;
+        animator= GetComponent<Animator>();
     }
 
     void Update()
@@ -35,5 +37,16 @@ public class AIEnemy : MonoBehaviour
             scale.x = Mathf.Abs(scale.x);
         }
         transform.localScale = scale;
+              if(transform.hasChanged)
+            {
+            animator.SetBool("isWalking", true);
+            transform.hasChanged = false;
+            }
+            else{
+                animator.SetBool("isWalking", false);
+            }
+
+
     }
+    
 }
